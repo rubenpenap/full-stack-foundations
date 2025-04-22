@@ -1,6 +1,6 @@
 import { type LinksFunction } from '@remix-run/node'
 import { Links, LiveReload, Scripts } from '@remix-run/react'
-import faviconAssetUrl from '../public/favicon.svg'
+import faviconAssetUrl from './assets/favicon.svg'
 import { EpicShop } from './epicshop.tsx'
 
 export const links: LinksFunction = () => {
