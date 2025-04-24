@@ -23,7 +23,7 @@ export default function NoteEdit() {
 	const data = useLoaderData<typeof loader>()
 
 	// 💣 remove this so we can return our form instead
-	return <pre>{JSON.stringify(data, null, 2)}</pre>
+	return
 
 	// 🐨 render a Remix Form with the method of "post"
 	// 🐨 render an <label> with the text "Title" and an <input> with the name "title" and defaultValue of data.note.title
