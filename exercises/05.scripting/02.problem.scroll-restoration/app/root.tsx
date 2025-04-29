@@ -7,6 +7,7 @@ import {
 	LiveReload,
 	Outlet,
 	Scripts,
+	ScrollRestoration,
 	useLoaderData,
 } from '@remix-run/react'
 import faviconAssetUrl from './assets/favicon.svg'
@@ -59,7 +60,7 @@ export default function App() {
 					<p>Built with ♥️ by {data.username}</p>
 				</div>
 				<div className="h-5" />
-				{/* 🐨 Add ScrollRestoration from '@remix-run/react' here */}
+				<ScrollRestoration />
 				<Scripts />
 				<EpicShop />
 				<LiveReload />
