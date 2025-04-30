@@ -14,6 +14,7 @@ import faviconAssetUrl from './assets/favicon.svg'
 import { EpicShop } from './epicshop.tsx'
 import fontStylesheetUrl from './styles/font.css'
 import tailwindStylesheetUrl from './styles/tailwind.css'
+import { getEnv } from './utils/env.server.ts'
 
 export const links: LinksFunction = () => {
 	return [
@@ -25,8 +26,7 @@ export const links: LinksFunction = () => {
 }
 
 export async function loader() {
-	// 🐨 add an ENV property to this which is the result of calling getEnv()
-	return json({ username: os.userInfo().username })
+	return json({ username: os.userInfo().username, ENV: getEnv() })
 }
 
 export default function App() {
@@ -66,6 +66,11 @@ export default function App() {
 					🐨 add an inline script here using dangerouslySetInnerHTML which
 					sets window.ENV to the JSON.stringified value of data.ENV
 				*/}
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `window.ENV = ${JSON.stringify(data.ENV)}`,
+					}}
+				/>
 				<Scripts />
 				<EpicShop />
 				<LiveReload />
