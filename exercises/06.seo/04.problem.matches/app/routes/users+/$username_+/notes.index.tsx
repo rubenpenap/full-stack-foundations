@@ -20,7 +20,7 @@ export const meta: MetaFunction<
 	)
 
 	const displayName = noteMatch?.data.owner.name ?? params.username
-	const noteCount = noteMatch?.data.notes.length ?? (0 as number)
+	const noteCount = noteMatch?.data.notes.length ?? 0
 	const notesText = noteCount === 1 ? 'note' : 'notes'
 	return [
 		{ title: `${displayName}'s Notes | Epic Notes` },
