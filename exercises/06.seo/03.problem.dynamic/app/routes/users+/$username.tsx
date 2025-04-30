@@ -31,14 +31,12 @@ export default function ProfileRoute() {
 	)
 }
 
-// 🐨 grab the user's information from the loader data
-// 🦺 if you want the types, pass the typeof loader as the first argument of the
-// MetaFunction generic type.
-// 🐨 use the data to get the user's name
-// 💯 handle the case where the user doesn't have a name (fallback to username)
-export const meta: MetaFunction = () => {
+export const meta: MetaFunction<typeof loader> = ({ data, params }) => {
+	const displayName = data?.user.name ?? params.username
 	return [
-		{ title: 'Profile | Epic Notes' },
-		{ name: 'description', content: 'Checkout this Profile on Epic Notes' },
+		{
+			title: `${displayName} | Epic Notes`,
+		},
+		{ name: 'description', content: `Profile of ${displayName} on Epic Notes` },
 	]
 }
