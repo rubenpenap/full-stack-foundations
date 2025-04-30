@@ -1,10 +1,11 @@
 import os from 'node:os'
 import { cssBundleHref } from '@remix-run/css-bundle'
-import { json, type LinksFunction } from '@remix-run/node'
+import { json, type LinksFunction, type MetaFunction } from '@remix-run/node'
 import {
 	Link,
 	Links,
 	LiveReload,
+	Meta,
 	Outlet,
 	Scripts,
 	ScrollRestoration,
@@ -34,10 +35,7 @@ export default function App() {
 	return (
 		<html lang="en" className="h-full overflow-x-hidden">
 			<head>
-				{/* 🐨 move the title and description to the meta export */}
-				{/* 🐨 add the Meta component here */}
-				<title>Epic Notes</title>
-				<meta name="description" content="Your own captain's log" />
+				<Meta />
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width,initial-scale=1" />
 				<Links />
@@ -81,6 +79,9 @@ export default function App() {
 	)
 }
 
-// 🐨 add a meta export here
-// 🐨 you'll want a title and a description
-// 🐨 don't move the charSet or viewport though. We don't want to override those.
+export const meta: MetaFunction = () => {
+	return [
+		{ title: 'Epic Notes' },
+		{ name: 'description', content: "Your own captain's log" },
+	]
+}
