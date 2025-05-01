@@ -9,7 +9,6 @@ import {
 } from '@remix-run/react'
 import { db } from '#app/utils/db.server.ts'
 import { invariantResponse } from '#app/utils/misc.tsx'
-import { isErrorResponse } from '@remix-run/react/dist/data.js'
 
 export async function loader({ params }: LoaderFunctionArgs) {
 	const user = db.user.findFirst({
