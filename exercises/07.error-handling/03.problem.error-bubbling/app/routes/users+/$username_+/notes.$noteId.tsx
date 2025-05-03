@@ -5,6 +5,7 @@ import {
 	type LoaderFunctionArgs,
 } from '@remix-run/node'
 import { Form, Link, useLoaderData, type MetaFunction } from '@remix-run/react'
+import { GeneralErrorBoundary } from '#app/components/error-boundary.tsx'
 import { floatingToolbarClassName } from '#app/components/floating-toolbar.tsx'
 import { Button } from '#app/components/ui/button.tsx'
 import { db } from '#app/utils/db.server.ts'
@@ -89,4 +90,14 @@ export const meta: MetaFunction<
 	]
 }
 
-// 🐨 add an error boundary here that uses GeneralErrorBoundary and a statusHandler for 404
+export function ErrorBoundary() {
+	return (
+		<GeneralErrorBoundary
+			statusHandlers={{
+				404: ({ params }) => (
+					<p>No note with the id "{params.noteId}" exists</p>
+				),
+			}}
+		/>
+	)
+}
